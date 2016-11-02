@@ -43,7 +43,8 @@ public struct Compass {
   }
 
   static func parseComponents(url: URL, payload: Any? = nil) -> Location? {
-    guard let route = url.host else { return nil }
+    guard let host = url.host else { return nil }
+    let route = "\(host)\(url.path)"
 
     let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
     var arguments = [String : String]()
